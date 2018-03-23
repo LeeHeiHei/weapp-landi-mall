@@ -1,0 +1,10 @@
+<!--compoents/m-navbar-type/m-navbar-type.wxml-->
+<view class="type-container">
+  <scroll-view class="type-navbar" scroll-x="true">
+    <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
+      <view id="{{item.id}}" data-item="{{item}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="_tabClick">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+</view>

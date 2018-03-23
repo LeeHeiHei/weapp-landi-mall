@@ -22,12 +22,22 @@ Page({
     wx.setNavigationBarTitle({
       title: wx.getStorageSync('mallName')
     })
-    app.userInfoReadyCallback = res => {
+    app.onLoginSuccess = res => {
+      console.log("===========");
       that.setData({
-        userInfo: res.userInfo,
+        userInfo: res,
         isBtnEnterEnable: true
       })
     }
+  },
+  
+  /**
+   * 跳转到首页
+   */
+  goToIndex: function () {
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
   },
 
   /**
@@ -62,7 +72,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading();
+    app.onLaunch();
+    setTimeout(()=>{
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+    },2000);
+   
   },
 
   /**

@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+      "m-swiper":"../../../compoents/m-swiper/m-swiper",
+      "m-navbar-type":"../../../compoents/m-navbar-type/m-navbar-type"
+    }
+}

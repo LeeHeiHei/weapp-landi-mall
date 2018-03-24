@@ -1,5 +1,6 @@
 // pages/index/index.js
 var config = require('../../config')
+var wxLogin = require('../../utils/wxLogin')
 //获取应用实例
 const app = getApp()
 Page({
@@ -18,10 +19,7 @@ Page({
     var that = this;
     this.getBannerList();
     this.getGoodsCategory();
-    app.onLoginSuccess = res => {
-      console.log("++++++++++++++");
-     
-    }
+    wxLogin.login();
   },
   /**
    * 获取Banner

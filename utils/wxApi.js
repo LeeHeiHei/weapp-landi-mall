@@ -53,6 +53,53 @@ function wxOpenSetting(){
   return wxPromisify(wx.openSetting)
 }
 
+function aa(){
+  return new Promise((resolve,reject)=>{
+    resolve("1111")
+  })
+}
+
+/**
+ * 获取授权
+ */
+function wxAuthorize(setting){
+  var ss = aa();
+  var getSetting = wxGetSetting();
+  return new Promise((resolve,reject)=>{
+    getSetting().then(res => {
+      if (res.authSetting[setting]) {
+        resolve(true)
+      } else {
+        wx.authorize({
+          scope: setting,
+          success: () => {
+            resolve(true)
+          },
+          fail: () => {
+            reject(false)
+          }
+        })
+      }
+    })
+  })
+  
+  // return wxGetSetting().then(res=>{
+  //   if (res.authSetting[setting]) {
+  //     resolve(true)
+  //   }else{
+  //     wx.authorize({
+  //       scope: setting,
+  //       success: () => {
+  //         resolve(true)
+  //       },
+  //       fail: () => {
+  //         reject(false)
+  //       }
+  //     })
+  //   }
+  // })
+}
+
 /**
  * 获取系统信息
  */
@@ -67,5 +114,6 @@ module.exports = {
   wxGetUserInfo: wxGetUserInfo(),
   wxGetSystemInfo: wxGetSystemInfo(),
   wxGetSetting: wxGetSetting(),
-  wxOpenSetting: wxOpenSetting()
+  wxOpenSetting: wxOpenSetting(),
+  wxAuthorize: wxAuthorize
 }

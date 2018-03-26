@@ -2,8 +2,11 @@ const app = getApp()
 var config = require('../config')
 var wxApi = require('wxApi')
 var wxRequest = require('wxRequest')
-var Promise = require('../plugins/es6-promise.js')
 var callback;
+
+/**
+ * login
+ */
 function login(cb) {
   callback = cb;
   if (app.globalData.userInfo) {
@@ -24,6 +27,9 @@ function login(cb) {
     serLogin(res);
   })
 }
+/**
+ * 验证用户Token
+ */
 function checkToken(opts) {
   return new Promise((resolve, reject) => {
     var token = app.globalData.token;
@@ -44,6 +50,9 @@ function checkToken(opts) {
     }
   })
 }
+/**
+ * 服务端登录
+ */
 function serLogin(opts) {
   wxRequest.postRequest(config.api.login, { code: opts.code })
     .then(res => {
@@ -72,6 +81,9 @@ function serLogin(opts) {
       })
     })
 }
+/**
+ * 自动注册
+ */
 function registerUser(opts) {
   wxApi.wxGetUserInfo().then(res => {
     var code = opts.code;

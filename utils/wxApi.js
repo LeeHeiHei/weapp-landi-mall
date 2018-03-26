@@ -1,4 +1,4 @@
-var Promise = require('../plugins/es6-promise.js')
+// var Promise = require('../plugins/es6-promise.js')
 function wxPromisify(fn) {
   return function (obj = {}) {
     return new Promise((resolve, reject) => {

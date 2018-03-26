@@ -52,16 +52,16 @@ Page({
    */
   onReady: function () {
     var that=this;
-    wx.onAccelerometerChange(function (res) {
-      var angle = -(res.x * 30).toFixed(1);
-      if (angle > 14) { angle = 14; }
-      else if (angle < -14) { angle = -14; }
-      if (that.data.angle !== angle) {
-        that.setData({
-          angle: angle
-        });
-      }
-    });
+    // wx.onAccelerometerChange(function (res) {
+    //   var angle = -(res.x * 30).toFixed(1);
+    //   if (angle > 14) { angle = 14; }
+    //   else if (angle < -14) { angle = -14; }
+    //   if (that.data.angle !== angle) {
+    //     that.setData({
+    //       angle: angle
+    //     });
+    //   }
+    // });
   },
 
   /**
@@ -89,11 +89,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    // wx.showNavigationBarLoading();
-    // app.onLaunch();
-    login.login();
     setTimeout(()=>{
-      // wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
     },2000);
    

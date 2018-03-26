@@ -2,7 +2,6 @@
 var config = require('config')
 var wxApi = require('utils/wxApi')
 var wxRequest = require('utils/wxRequest')
-var Promise = require('plugins/es6-promise.js')
 App({
   onLaunch: function () {
     var that = this;
